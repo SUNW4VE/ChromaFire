@@ -11,6 +11,8 @@ of white.
 as long as the developers don't implement a kernel-level anti-cheat.
 Nothing is injected into the game files; the program simply scans
 a certain pixel from your monitor screen
+- As of right now, your monitor (NOT GAME) needs to be set to 1080p
+resolution in order for ChromaFire to function properly
 
 Performance statistics:
 ------------------------------------------------------------------
@@ -37,6 +39,5 @@ Roadmap:
 ------------------------------------------------------------------
 - Fix known issues
 - Toggle RMB instead of hold RMB (?)
-- Program ChromaFire to automatically determine the center of the 
-crosshair's pixel coordinates (to support multiple monitor
-resolutions)
+- Automatically determine the center of the crosshair's pixel 
+coordinates (to support multiple display resolutions)
