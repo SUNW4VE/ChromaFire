@@ -7,6 +7,10 @@ How it works:
 - ChromaFire repeatedly scans the center of your weapon crosshair. 
 It sends a click whenever that pixel is NOT a close enough shade 
 of white.
+- ChromaFire w/AutoScope (CFScope) scopes in before a click, and
+scopes out after a click. To prevent rapid and unnecessary scoping,
+CFScope additionally prompts you to enter a detection cooldown
+interval.
 - ChromaFire, especially the .exe version, should be undetectable
 as long as the developers don't implement a kernel-level anti-cheat.
 Nothing is injected into the game files; the program simply scans
