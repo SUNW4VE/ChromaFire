@@ -42,7 +42,9 @@ by nature and I am not planning to fix this
 
 Roadmap:
 ------------------------------------------------------------------
-- Fix known issues
-- Toggle RMB instead of hold RMB (?)
+- Fix known issues while maintaining low latency
+- Activate with Toggle RMB instead of Hold RMB (?)
+- Reduce latency (I might remake ChromaFire entirely with C++
+for the sake of this)
 - Automatically determine the center of the crosshair's pixel 
 coordinates (to support multiple display resolutions)
