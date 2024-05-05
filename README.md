@@ -23,7 +23,7 @@ Performance statistics:
 ------------------------------------------------------------------
 - ~240 detections per second when the crosshair is white
 - ~70 detections per second when the crosshair is not white
-- Detection-click latency is 5-15ms
+- Detection-to-click latency is 5-15ms
 - The above stats were tested using an AMD Ryzen 9 5900X
   
 Known issues:
