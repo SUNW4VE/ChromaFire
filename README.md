@@ -10,7 +10,6 @@ of white.
 as long as the developers don't implement a kernel-level anti-cheat.
 Nothing is injected into the game files; the program simply scans
 a certain pixel from your monitor screen
-------------------------------------------------------------------
 Performance statistics:
 ------------------------------------------------------------------
 - ~240 detections per second when the crosshair is white
