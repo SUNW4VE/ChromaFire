@@ -49,3 +49,6 @@ Roadmap:
 for the sake of this)
 - Automatically determine the center of the crosshair's pixel 
 coordinates (to support multiple display resolutions)
+- Log all of the weapon hotkeys, autoscope only when the last weapon
+hotkey pressed is Sniper -- effectively creating a master version of
+ChromaFire
