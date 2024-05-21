@@ -40,6 +40,8 @@ future anti-cheat system
 - ChromaFire only works properly with weapons that have a center
 dot with their crosshair. This is how the program detects enemies
 by nature and I am not planning to fix this
+- Rare bug that detection does not turn off when releasing right
+click
 
 Roadmap:
 ------------------------------------------------------------------
