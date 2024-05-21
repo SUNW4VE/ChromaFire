@@ -30,7 +30,7 @@ an NVIDIA Geforce RTX 3080 Ti, with the game capped to 240 FPS
 Known issues:
 ------------------------------------------------------------------
 - Weapon effects that alter the chromatic nature of your screen
-(blindness, love, etc.) throw off the detection and causes 
+(blindness, love, etc.) throw off the detection and cause 
 ChromaFire to send a false trigger
 - Teammates and pets cause ChromaFire to send a false trigger, due 
 to the crosshair turning blue when placed over them
