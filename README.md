@@ -3,54 +3,61 @@ ChromaFire - a triggerbot for Pixel Gun 3D
 
 How it works:
 ------------------------------------------------------------------
-- Detection is active whenever **RMB** is held down.
-- **Ctrl+Q** closes the script.
-- ChromaFire repeatedly scans the **center** of your weapon crosshair. 
-It sends a click whenever that pixel is NOT a close enough shade 
-of white.
-- ChromaFire w/AutoScope (CFScope) scopes in before a click, and
-scopes out after a click. This eliminates bloom for all snipers. To
-prevent rapid and unnecessary scoping, CFScope prompts you beforehand
-to enter a detection cooldown interval.
-- ChromaFire, especially the **.exe** version, should be undetectable
-as long as the developers don't implement a kernel-level anti-cheat.
-Nothing is injected into the game files; the program simply scans
-a certain pixel from your monitor screen
-- As of right now, your **Windows** (NOT GAME) resolution needs to be
-set to 1920x1080 in order for ChromaFire to function properly
+- Detection is active whenever the game window is focused and the
+**toggle** is ON. The toggle key is by default E, but can be
+changed to a different keybind via the config file.
+- When detection is active, ChromaFire repeatedly scans the center
+of your weapon crosshair. It sends a click whenever that pixel is
+a close enough shade of red. The threshold and tolerance of this
+shade can be modified via the config file.
+- If you use custom weapon keybinds, set them in the config file.
+If the last weapon bind you selected with the sniper bind, the 
+program will autoscope and fire for maximum accuracy.
+- ChromaFire, should be undetectable so long as the developers do
+not implement a kernel-level anti-cheat. Nothing is injected into 
+the game files; the program simply scans a certain pixel from your 
+monitor screen
 
-Performance statistics:
+Update Notes:
 ------------------------------------------------------------------
-- ~240 detections per second when the crosshair is white
-- ~70 detections per second when the crosshair is not white
-- Detection-to-click latency is 5-15ms
-- The above statistics were recorded with an AMD Ryzen 9 5900X and
-an NVIDIA Geforce RTX 3080 Ti, with the game capped to 240 FPS
+- The program has been fully rewritten from AutoHotkey to C++
+- Detection is significantly faster than ChromaFire 1.2
+- Positive detection to click latency is significantly more 
+responsive than ChromaFire 1.2
+- ChromaFire is now based off a switch toggle instead of a hold 
+toggle
+- Customizable toggle keybind
+- Standard ChromaFire and Autoscope ChromaFire have been unified
+into a single program
+- Customizable weapon keybinds to track when to use autoscope fire
+or regular fire
+- Automatic resolution detection to determine the center crosshair
+pixel
+- Fixed an issue where ChromaFire would always send clicks in rapid 
+succession when it detects positive. Users can now set customizable 
+detection intervals for each weapon category to prevent rapid 
+succession of clicking which may trigger anti-cheats
+- Fixed an issue where teammates and pets caused ChromaFire to 
+send a false trigger due to the crosshair turning blue when placed 
+over them
   
 Known issues:
 ------------------------------------------------------------------
 - Weapon effects that alter the chromatic nature of your screen
-(blindness, love, etc.) throw off the detection and cause 
-ChromaFire to send a false trigger
-- Teammates and pets cause ChromaFire to send a false trigger, due 
-to the crosshair turning blue when placed over them
-- Standard ChromaFire (not the scope version) sends a click ~70
-times per second when it detects positive, which may trigger a
-future anti-cheat system
-- ChromaFire only works properly with weapons that have a center
-dot with their crosshair. This is how the program detects enemies
-by nature and I am not planning to fix this
-- Rare bug that detection does not turn off when releasing right
-click
+(blindness, love, etc.) throw off the detection and disable
+ChromaFire for the length of their effect
+- Low detection intervals mean that rapid clicks will be sent when
+ChromaFire detects positive
+- ChromaFire breaks when toggle bind is set to a mouse click 
+button. Currently, there is error handling to prevent users from 
+setting it that way
+- ChromaFire sleep interval for one weapon category can "creep" 
+into another weapon category, causing the latter to not fire when
+ready
+- ChromaFire only functions properly with weapons that have a 
+center dot with their crosshair. This is how the program detects 
+enemies by nature and I am not planning to fix this
 
 Roadmap:
 ------------------------------------------------------------------
-- Fix known issues while maintaining low latency
-- Activate with Toggle RMB instead of Hold RMB (?)
-- Reduce latency (I might remake ChromaFire entirely with C++
-for the sake of this)
-- Automatically determine the center of the crosshair's pixel 
-coordinates (to support multiple display resolutions)
-- Log all of the weapon hotkeys, autoscope only when the last weapon
-hotkey pressed is Sniper -- effectively creating a master version of
-ChromaFire
+- Fix known issues
