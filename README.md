@@ -51,9 +51,9 @@ ChromaFire detects positive
 - ChromaFire breaks when toggle bind is set to a mouse click 
 button. Currently, there is error handling to prevent users from 
 setting it that way
-- ChromaFire sleep interval for one weapon category can "creep" 
-into another weapon category, causing the latter to not fire when
-ready
+- If over 500ms, ChromaFire sleep interval for one weapon category 
+can "creep" into another weapon category, causing the latter to not 
+fire when ready
 - ChromaFire only functions properly with weapons that have a 
 center dot with their crosshair. This is how the program detects 
 enemies by nature and I am not planning to fix this
