@@ -1,0 +1,58 @@
+-- CHROMAFIRE CONFIG FILE --
+
+> TOGGLE SWITCH BIND <
+Enable Detection: e
+
+- Do not set the toggle bind to a mouse click button.
+
+> LOADOUT BINDS <
+Primary: 1
+Backup: 2
+Melee: 3
+Special: 4
+Sniper: 5
+Heavy: 6
+
+- Loadout binds must be set to the ones in game. This ensures that ChromaFire runs properly.
+(Ensure that there is whitespace between the colon and your intended keybind.)
+
+> DETECTION INTERVALS (MS) <
+Primary: 0
+Backup: 0
+Melee: 0
+Special: 0
+Sniper: 1800
+Heavy: 0
+
+- For SNIPER, set the detection interval NO LOWER than the firerate of your intended weapons.
+- For all other categories, lower interval = more resource consumption
+- Due to the nature of this program, the detection intervals can be a few ms lower than the real firerates
+
+> DETECTION THRESHOLDS AND TOLERANCES (0-255) <
+Red Threshold: 165
+Green/Blue Tolerance: 65
+
+- 150-200 is recommended for R threshold, 40-80 is recommended for G/B tolerance
+
+IF YOU WANT TO USE ANY NON-ALPHANUMERIC BINDS, ENTER THEM EXACTLY AS SHOWN:
+Left Click --> LCLICK
+Right Click --> RCLICK
+Middle Click --> MCLICK
+Mouse Button 4 --> MB4
+Mouse Button 5 --> MB5
+Left Shift --> LSHIFT
+Right Shift --> RSHIFT
+Caps Lock --> CAPITAL
+Tab --> TAB
+Left Ctrl --> LCTRL
+Right Ctrl --> RCTRL
+Left Alt --> LALT
+Right Alt --> RALT
+Backspace --> BACKSPACE
+Enter --> ENTER
+Left Arrow Key --> LARROW
+Right Arrow Key --> RARROW
+Up Arrow Key --> UARROW
+Down Arrow Key --> DARROW
+FN KEYS --> F1, F2, F3, ..., F12
+
