@@ -13,7 +13,7 @@ shade can be modified via the config file.
 - If you use custom weapon keybinds, set them in the config file.
 If the last weapon bind you selected with the sniper bind, the 
 program will autoscope and fire for maximum accuracy.
-- ChromaFire, should be undetectable so long as the developers do
+- ChromaFire should be undetectable so long as the developers do
 not implement a kernel-level anti-cheat. Nothing is injected into 
 the game files; the program simply scans a certain pixel from your 
 monitor screen
