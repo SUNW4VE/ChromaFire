@@ -34,7 +34,7 @@ public:
 	// destructor
 	~Weapon();
 
-	// weaponBind must be made public to reduce unnecessary overhead
+	// weaponBind and detectionInterval must be made public to reduce unnecessary overhead
 	int weaponBind;
 
 private:
