@@ -1,9 +1,13 @@
--- CHROMAFIRE CONFIG FILE --
+-- CHROMAFIRE CONFIG FILE -- READ EVERYTHING!!! --
 
-> TOGGLE SWITCH BIND <
-Enable Detection: e
+> Trigger MODE (HOLD/TOGGLE) <
+Trigger Mode: TOGGLE
 
-- Do not set the toggle bind to a mouse click button.
+> Trigger BIND <
+Enable Detection: LSHIFT
+
+- Do not set the toggle bind to left or right click; the inputs will interfere with the
+program's functionality.
 
 > LOADOUT BINDS <
 Primary: 1
@@ -17,22 +21,25 @@ Heavy: 6
 (Ensure that there is whitespace between the colon and your intended keybind.)
 
 > DETECTION INTERVALS (MS) <
-Primary: 0
-Backup: 0
-Melee: 0
-Special: 0
-Sniper: 1800
-Heavy: 0
+Primary: 100
+Backup: 100
+Melee: 100
+Special: 100
+Sniper: 650
+Heavy: 100
 
-- For SNIPER, set the detection interval NO LOWER than the firerate of your intended weapons.
+- For SNIPER, set the detection interval to the firerate of your weapon
 - For all other categories, lower interval = more resource consumption
-- Due to the nature of this program, the detection intervals can be a few ms lower than the real firerates
+- Detection intervals too low may flag future anti-cheat systems
 
 > DETECTION THRESHOLDS AND TOLERANCES (0-255) <
-Red Threshold: 165
-Green/Blue Tolerance: 65
+Red Threshold: 140
+Green/Blue Tolerance: 85
 
-- 150-200 is recommended for R threshold, 40-80 is recommended for G/B tolerance
+- 120-160 is recommended for R threshold, 60-100 is recommended for G/B tolerance
+
+> WEAPON SWITCH INTERVAL (~470 for standard, ~270 for old school) <
+Switch Interval: 470
 
 IF YOU WANT TO USE ANY NON-ALPHANUMERIC BINDS, ENTER THEM EXACTLY AS SHOWN:
 Left Click --> LCLICK
