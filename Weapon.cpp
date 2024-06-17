@@ -64,7 +64,6 @@ void Weapon::fire() const {
 	mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
 	std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-	std::this_thread::sleep_for(std::chrono::milliseconds(detectionInterval - 10));
 }
 
 void Weapon::zoomFire() const {
@@ -73,7 +72,6 @@ void Weapon::zoomFire() const {
 	std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 	mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
-	std::this_thread::sleep_for(std::chrono::milliseconds(detectionInterval - 10));
 }
 
 // destructor
