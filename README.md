@@ -22,7 +22,8 @@ or write memory that belongs to the game.
 
 Performance Statistics:
 ------------------------------------------------------------------
-- Pixel-to-click latency of 3.2 +- 0.2ms measured using std::chrono
+- Pixel-to-click latency of 3.2 +- 0.2ms measured using chrono
+library
 - 94% accuracy (when functioning properly)
 
 2.1 Patch Notes:
