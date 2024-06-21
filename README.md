@@ -1,6 +1,11 @@
 ChromaFire - a triggerbot for Pixel Gun 3D
 ------------------------------------------------------------------
 
+HELP WANTED:
+------------------------------------------------------------------
+- Integrate low-level mouse/keyboard hooks into ChromaFire to
+block native toggle inputs from going through
+
 How it works:
 ------------------------------------------------------------------
 - When detection is active, ChromaFire repeatedly scans the center 
