@@ -15,7 +15,7 @@ well as the detection bind and mode, can be modified via the
 config file.
 - If you use custom weapon keybinds, set them in the config file.
 If the last weapon bind you selected with the sniper bind, the 
-program will autoscope and fire for maximum accuracy.
+program will autoscope and fire for 100% accuracy.
 - ChromaFire should be undetectable so long as the developers do
 not implement a kernel-level anti-cheat. The program does not read
 or write memory that belongs to the game.
