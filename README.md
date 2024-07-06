@@ -9,8 +9,9 @@ the Win32 API. As ChromaFire does not read or write memory
 belonging to the game, even kernel-level anti-cheats such as EAC
 should have trouble detecting it.
 - Due to the ease of use and the improbable chance of anti-cheat
-detection, a program of similar nature could have destroyed the
-entire Pixel Gun 3D community, had it been released pre-patch.
+detection, had a program of similar nature been released to the
+public pre-patch, it could have destroyed the entire Pixel Gun 3D
+community.
 - This repository has been made **public** as I have already
 showcased ChromaFire's potential to the game development team.
 
