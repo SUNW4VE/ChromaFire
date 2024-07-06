@@ -78,7 +78,8 @@ enemies by nature and I am not planning to fix this
 Roadmap:
 ------------------------------------------------------------------
 - Code cleanup
-- Implement reload glitch into C++ ChromaFire
+- Implement reload glitch into ChromaFire
+- Implement refill glitch into ChromaFire
 - Integrate low-level mouse/keyboard hooks into ChromaFire to
 block native toggle inputs from sending through
 - Fix other known issues
