@@ -1,10 +1,19 @@
-ChromaFire - a triggerbot for Pixel Gun 3D
+ChromaFire
 ------------------------------------------------------------------
-
-HELP WANTED:
-------------------------------------------------------------------
-- Integrate low-level mouse/keyboard hooks into ChromaFire to
-block native toggle inputs from sending through
+- ChromaFire is a **white-hat** Pixel Gun 3D triggerbot tool. I
+built this for the sole purpose of demonstrating exploitability of
+in-game features to the developer team.
+- This program operates discreetly by nature, acting based on the
+state of specific display pixels and user-specified key inputs via
+the Win32 API. As ChromaFire does not read or write memory
+belonging to the game, even kernel-level anti-cheats such as EAC
+should have trouble detecting it.
+- Due to the improbable chance of anti-cheat detection, if a
+program of similar nature was released to the public with
+malicious intent, it would have had the potential of destroying the
+entire Pixel Gun 3D community.
+- This repository has been made **public** as I have already
+showcased ChromaFire's potential to the game development team.
 
 How it works:
 ------------------------------------------------------------------
@@ -16,9 +25,6 @@ config file.
 - If you use custom weapon keybinds, set them in the config file.
 If the last weapon bind you selected with the sniper bind, the 
 program will autoscope and fire for 100% accuracy.
-- ChromaFire should be undetectable so long as the developers do
-not implement a kernel-level anti-cheat. The program does not read
-or write memory which belongs to the game.
 
 Performance Statistics:
 ------------------------------------------------------------------
@@ -66,10 +72,12 @@ detections
 button. Currently, there is error handling to prevent users from 
 setting it that way
 - ChromaFire only functions properly with weapons that have a 
-center dot with their crosshair. This is how the program detects 
+center dot with their crosshair. This is how the program detects
 enemies by nature and I am not planning to fix this
 
 Roadmap:
 ------------------------------------------------------------------
-- Fix known issues
 - Code cleanup
+- Integrate low-level mouse/keyboard hooks into ChromaFire to
+block native toggle inputs from sending through
+- Fix other known issues
