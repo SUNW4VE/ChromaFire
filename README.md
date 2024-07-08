@@ -1,6 +1,6 @@
 ChromaFire
 ------------------------------------------------------------------
-- **This repository has been made **public** as I have
+- **This repository has been opened to the **public** as I have
 showcased ChromaFire's potential to the game development team.**
 - ChromaFire is a **white-hat** Pixel Gun 3D triggerbot tool. I
 built this for the sole purpose of demonstrating exploitability of
