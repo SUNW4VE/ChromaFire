@@ -12,8 +12,8 @@ should have trouble detecting it.
 detection, had a program of similar nature been released to the
 public pre-patch, it could have destroyed the entire Pixel Gun 3D
 community.
-- This repository has been made **public** as I have
-showcased ChromaFire's potential to the game development team.
+- **This repository has been made **public** as I have
+showcased ChromaFire's potential to the game development team.**
 
 Usage:
 ------------------------------------------------------------------
