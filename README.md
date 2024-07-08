@@ -25,7 +25,8 @@ well as the detection bind and mode, can be modified via the
 config file.
 - If you use custom weapon keybinds, set them in the config file.
 If the last weapon bind you selected with the sniper bind, the 
-program will autoscope and fire for 100% accuracy.
+program will autoscope for accuracy.
+- Focus on the CLI window and press **Ctrl+Q** to quit.
 
 Performance Statistics:
 ------------------------------------------------------------------
