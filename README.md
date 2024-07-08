@@ -15,8 +15,9 @@ community.
 - This repository has been made **public** as I have
 showcased ChromaFire's potential to the game development team.
 
-How it works:
+Usage:
 ------------------------------------------------------------------
+- Download and unzip the latest version.
 - When detection is active, ChromaFire repeatedly scans the center 
 of your screen. It sends a click whenever that pixel is a close 
 enough shade of red. The threshold and tolerance of this shade, as
