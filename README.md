@@ -66,7 +66,7 @@ over them
 Known issues:
 ------------------------------------------------------------------
 - Weapon effects that alter the chromatic nature of your screen
-(blindness, love, etc.) may throw off the detection and disable
+(blindness, charm, etc.) may throw off the detection and disable
 ChromaFire for the length of their effect
 - Surfaces that are a shade of red will cause false positive
 detections
