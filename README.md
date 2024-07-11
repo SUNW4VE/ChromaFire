@@ -37,7 +37,7 @@ library functions
 2.1 Patch Notes:
 ------------------------------------------------------------------
 - You can now choose the trigger mode - HOLD or TOGGLE
-- New "switch" interval - IGNORE if you do not play old school
+- New "switch" interval - Delays detection until a weapon is ready to fire, preventing misinputs. Ignore if you do not play old school
 private matches
 - Fixed an issue where the sleep interval for one weapon category 
 can "creep" into another weapon category, causing the latter to not 
