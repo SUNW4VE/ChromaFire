@@ -11,8 +11,8 @@ the Win32 API. As ChromaFire does not read or write memory
 belonging to the game, even kernel-level anti-cheats such as EAC
 should have trouble detecting it.
 - Due to the ease of use and the improbable chance of anti-cheat
-detection, had a program of similar nature been released to the
-public pre-patch, it could have destroyed the entire Pixel Gun 3D
+detection, if a program of similar nature had been released to the
+public before patches, it could have destroyed the entire Pixel Gun 3D
 community.
 
 Usage:
@@ -26,7 +26,7 @@ config file.
 - If you use custom weapon keybinds, set them in the config file.
 If the last weapon bind you selected with the sniper bind, the 
 program will autoscope for accuracy.
-- Focus on the CLI window and press **Ctrl+Q** to quit.
+- Focus the CLI window and press **Ctrl+Q** to quit.
 
 Performance Statistics:
 ------------------------------------------------------------------
