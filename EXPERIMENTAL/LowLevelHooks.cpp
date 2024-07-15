@@ -1,10 +1,8 @@
 /*
-
 Need to:
 	Block the input of only the trigger bind and nothing else (only check for the case of the trigger bind)
 	- Trigger bind can be a mouse input, an alphanumeric keyboard input, or a Windows keyboard input (ctrl, alt, caps)
 	Integrate this entire program into a singular function that returns TRUE if the trigger bind is HELD down
-
 */
 
 #include <iostream>

@@ -25,7 +25,7 @@ public:
 	void setInterval(int newInterval);
 	void setCategoryName(const std::string& newName);
 
-	// miscellaneous
+	// other functions
 	bool chromaSearch(const int& CENTER_X, const int& CENTER_Y, int& r, int& g, int& b, 
 		const int& RTHRESHOLD, const int& GBTOLERANCE, HDC crosshair);
 	void fire() const;

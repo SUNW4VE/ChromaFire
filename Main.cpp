@@ -384,7 +384,7 @@ int main() {
 	return 0;
 }
 
-// set last weapon bind, then return number of weapon
+// set last weapon bind, then return # of weapon
 void checkLastBind(int key0, int key1, int key2, int key3, int key4, int key5,
 	int& lastBind, int &lastBindCategoryNumber) {
 

@@ -41,7 +41,7 @@ void Weapon::setCategoryName(const std::string& newName) {
 	categoryName = newName;
 }
 
-// miscellaneous:
+// other functions:
 
 // pass by reference to reduce overhead
 bool Weapon::chromaSearch(const int& CENTER_X, const int& CENTER_Y, int& r, int& g, int& b, 
