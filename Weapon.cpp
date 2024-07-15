@@ -45,7 +45,7 @@ void Weapon::setCategoryName(const std::string& newName) {
 
 // pass by reference to reduce overhead
 bool Weapon::chromaSearch(const int& CENTER_X, const int& CENTER_Y, int& r, int& g, int& b, 
-	const int& RTHRESHOLD, const int& GBTOLERANCE, static HDC crosshair) {
+	const int& RTHRESHOLD, const int& GBTOLERANCE, HDC crosshair) {
 	crosshair = ::GetDC(0);
 	COLORREF color = GetPixel(crosshair, CENTER_X, CENTER_Y);
 	r = GetRValue(color);

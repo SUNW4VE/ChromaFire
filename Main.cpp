@@ -33,10 +33,10 @@ int main() {
 	cout << "\nAuto-detected Windows resolution: " << (CENTER_X + 3) * 2 << "x" << (CENTER_Y + 3) * 2 << endl; // RESLOG
 
 	int triggerBind = '0';
-	int rThreshold = NULL;
-	int gbTolerance = NULL;
+	int rThreshold = -1;
+	int gbTolerance = -1;
 	string triggerMode = "";
-	int switchInterval = NULL;
+	int switchInterval = -1;
 
 	Weapon weapon[6] = {
 		Weapon("PRIMARY"),	// [0]
@@ -195,10 +195,10 @@ int main() {
 
 	// PRINCIPAL SECTION OF PROGRAM - detection + fire loop
 	int lastBind = '\0';
-	int newLastBindCategoryNumber = NULL;
+	int newLastBindCategoryNumber = -1;
 	int currentLastBindCategoryNumber = 0;
 	static HDC crosshair = NULL;
-	int r, g, b = NULL;
+	int r, g, b = -1;
 	bool toggleState = false;
 	bool wasPressed = false;
 	bool shouldBreak = true;
@@ -382,11 +382,6 @@ int main() {
 	cout << "\n\nCtrl + Q was pressed. Exiting ChromaFire.\n";
 	system("pause");
 	return 0;
-}
-
-// intercept toggle bind so that the native bind does not send through
-bool toggleIntercept(int toggleBind) {
-
 }
 
 // set last weapon bind, then return number of weapon

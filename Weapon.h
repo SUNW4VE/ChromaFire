@@ -27,7 +27,7 @@ public:
 
 	// miscellaneous
 	bool chromaSearch(const int& CENTER_X, const int& CENTER_Y, int& r, int& g, int& b, 
-		const int& RTHRESHOLD, const int& GBTOLERANCE, static HDC crosshair);
+		const int& RTHRESHOLD, const int& GBTOLERANCE, HDC crosshair);
 	void fire() const;
 	void zoomFire() const;
 
