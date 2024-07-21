@@ -1,7 +1,5 @@
 ChromaFire
 ------------------------------------------------------------------
-- **This repository has been opened to the **public** as I have
-showcased ChromaFire's potential to the game development team.**
 - ChromaFire is a **white-hat** Pixel Gun 3D triggerbot tool. I
 built this for the sole purpose of demonstrating exploitability of
 in-game features.
@@ -10,10 +8,8 @@ state of specific display pixels and user-specified key inputs via
 the Win32 API. As ChromaFire does not read or write memory
 belonging to the game, even kernel-level anti-cheats such as EAC
 should have trouble detecting it.
-- Due to the ease of use and the improbable chance of anti-cheat
-detection, if a program of similar nature had been released to the
-public before patches, it could have destroyed the entire Pixel Gun 3D
-community.
+- **This repository has been opened to the **public** as I have
+showcased ChromaFire's potential to the game development team.**
 
 Usage:
 ------------------------------------------------------------------
