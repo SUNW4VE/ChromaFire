@@ -9,7 +9,8 @@ the Win32 API. As ChromaFire does not read or write memory
 belonging to the game, even kernel-level anti-cheats such as EAC
 should have trouble detecting it.
 - **This repository has been opened to the **public** as I have
-showcased ChromaFire's potential to the game development team.**
+showcased ChromaFire's potential to the game development team, and
+they have patched the exploits accordingly.**
 
 Usage:
 ------------------------------------------------------------------
