@@ -11,7 +11,6 @@ void checkLastBind(int key0, int key1, int key2, int key3, int key4, int key5,
 int getBind(string input);
 void printBind(string categoryName, char standardBind);
 void printBind(string categoryName, string customBind);
-bool toggleIntercept(int toggleBind);
 
 int main() {
 
