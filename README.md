@@ -20,10 +20,16 @@ of your screen. It sends a click whenever that pixel is a close
 enough shade of red. The threshold and tolerance of this shade, as
 well as the detection bind and mode, can be modified via the 
 config file.
-- If you use custom weapon keybinds, set them in the config file.
-If the last weapon bind you selected with the sniper bind, the 
-program will autoscope for accuracy.
 - Focus the CLI window and press **Ctrl+Q** to quit.
+
+Configurable Customizations:
+------------------------------------------------------------------
+- Weapon keybinds
+- Weapon detection pause intervals
+- Detection keybind
+- Detection by Toggle or Hold
+- Detection color thresholds
+- Switch pause interval
 
 Performance Statistics:
 ------------------------------------------------------------------
