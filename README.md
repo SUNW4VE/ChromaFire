@@ -15,11 +15,11 @@ they have patched the exploits accordingly.**
 Usage:
 ------------------------------------------------------------------
 - Download and unzip the latest release.
+- Customize the CF_config.txt file if necessary.
+- Launch ChromaFire.exe
 - When detection is active, ChromaFire repeatedly scans the center 
 of your screen. It sends a click whenever that pixel is a close 
-enough shade of red. The threshold and tolerance of this shade, as
-well as the detection bind and mode, can be modified via the 
-config file.
+enough shade of red.
 - Focus the CLI window and press **Ctrl+Q** to quit.
 
 Configurable Customizations:
@@ -29,7 +29,7 @@ Configurable Customizations:
 - Switch pause interval - Prevent unnecessary overhead while the weapon cannot fire due to pullout 
 - Detection keybind
 - Detection by Toggle or Hold
-- Detection color thresholds
+- Detection color tolerances/thresholds
 
 Performance Statistics:
 ------------------------------------------------------------------
