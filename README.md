@@ -15,8 +15,8 @@ they have patched the exploits accordingly.**
 Usage:
 ------------------------------------------------------------------
 - Download and unzip the latest release.
-- Customize the CF_config.txt file if necessary.
-- Launch ChromaFire.exe
+- Customize the "CF_config.txt" file if necessary.
+- Launch "ChromaFire.exe".
 - When detection is active, ChromaFire repeatedly scans the center 
 of your screen. It sends a click whenever that pixel is a close 
 enough shade of red.
