@@ -25,11 +25,11 @@ config file.
 Configurable Customizations:
 ------------------------------------------------------------------
 - Weapon keybinds
-- Weapon detection pause intervals
+- Weapon detection pause intervals - Prevent unnecessary overhead while the weapon cannot fire due to firerate
 - Detection keybind
 - Detection by Toggle or Hold
 - Detection color thresholds
-- Switch pause interval
+- Switch pause interval - Prevent unnecessary overhead while the weapon cannot fire due to pullout 
 
 Performance Statistics:
 ------------------------------------------------------------------
