@@ -27,7 +27,7 @@ Configurable Customizations:
 - Weapon keybinds
 - Weapon detection pause intervals - Prevent unnecessary overhead while the weapon cannot fire due to firerate
 - Switch pause interval - Prevent unnecessary overhead while the weapon cannot fire due to pullout 
-- Detection keybind
+- Enable detection keybind
 - Detection by Toggle or Hold
 - Detection color tolerances/thresholds
 
