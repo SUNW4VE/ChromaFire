@@ -25,8 +25,8 @@ enough shade of red.
 Configurable Customizations:
 ------------------------------------------------------------------
 - Weapon keybinds
-- Weapon detection pause intervals - Prevent unnecessary overhead while the weapon cannot fire due to firerate
-- Switch pause interval - Prevent unnecessary overhead while the weapon cannot fire due to pullout 
+- Weapon detection pause intervals - Prevent unnecessary scans while the weapon cannot fire due to firerate
+- Switch pause interval - Prevent unnecessary scans while the weapon cannot fire due to pullout 
 - Enable detection keybind
 - Detection by Toggle or Hold
 - Detection color tolerances/thresholds
