@@ -82,8 +82,8 @@ enemies by nature and I am not planning to fix this
 
 Roadmap:
 ------------------------------------------------------------------
-- Massive code cleanup (I made this before learning about "flags")
 - Implement reload glitch into ChromaFire
 - Integrate low-level mouse/keyboard hooks into ChromaFire to
 block native toggle inputs from sending through
 - Fix other known issues
+- Day 1482904729038 of nudging myself to do a massive code cleanup
