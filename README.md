@@ -86,4 +86,4 @@ Roadmap:
 - Integrate low-level mouse/keyboard hooks into ChromaFire to
 block native toggle inputs from sending through
 - Fix other known issues
-- Massive code cleanup
+- Massive code cleanup because this organization is abhorrently horrendous
