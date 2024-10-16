@@ -20,7 +20,7 @@ Usage for testers:
 - When detection is active, ChromaFire repeatedly scans the center 
 of your screen. It sends a click whenever that pixel is a close 
 enough shade of red.
-- Focus the CLI window and press **Ctrl+Q** to quit.
+- Focus the terminal window and press **Ctrl+Q** to quit.
 
 Configurable Customizations:
 ------------------------------------------------------------------
