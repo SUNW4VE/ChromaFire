@@ -12,7 +12,7 @@ should have trouble detecting it.
 showcased ChromaFire's potential to the game development team, and
 they have patched the exploits accordingly.**
 
-Usage:
+Usage for testers:
 ------------------------------------------------------------------
 - Download and unzip the latest release.
 - Customize the "CF_config.txt" file if necessary.
