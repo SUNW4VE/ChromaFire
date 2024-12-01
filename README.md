@@ -4,6 +4,7 @@ testing instructions:
 - quit by either closing the window, ctrl+c in terminal, or ctrl+q anywhere
 - have fun
 
+
 why use this over legacy chromafire?
 - 94% --> 98% in-game accuracy
 - no setup required
