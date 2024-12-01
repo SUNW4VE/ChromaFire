@@ -11,3 +11,4 @@ why use this over legacy chromafire?
 - non-white checks instead of red checks (more predictable)
 - massive overhead reduction (and therefore signal-to-latency reduction)
 - no reported bugs
+- not world famous spaghetti code
