@@ -3,15 +3,20 @@
 #include <chrono>
 #include <thread>
 
-#define PROGRAM_OPEN "\nlaunched fastCF.\n"
-#define PROGRAM_CLOSE "goodbye\n"
+#define PROGRAM_OPEN "Launched fastCF.\n"
+#define PROGRAM_CLOSE "Closing fastCF.\n"
+#define FAILED_THREAD "Failed to create thread.\n"
 #define LOOP_SLEEP 5
 
 uint16_t CENTER_X, CENTER_Y;
 const uint8_t MIN_INTENSITY = 155;
-const uint8_t TRIGGER = VK_RBUTTON;
 const uint8_t QUIT_KEY = 'Q';   // CTRL + QUIT_KEY
 
+volatile bool clickHeld = false;
+HHOOK mouseHook;
+
+DWORD WINAPI MessageLoop(LPVOID lpParam);
+LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam);
 void chromaSearch(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
                   BITMAPINFO *bmi);
 void shoot();
@@ -24,8 +29,8 @@ int main() {
     SetProcessDPIAware();
 
     // get pixel coords
-    CENTER_X = (GetSystemMetrics(SM_CXSCREEN) / 2);
-    CENTER_Y = (GetSystemMetrics(SM_CYSCREEN) / 2);
+    CENTER_X = (GetSystemMetrics(SM_CXSCREEN) / 2 );
+    CENTER_Y = (GetSystemMetrics(SM_CYSCREEN) / 2 );
 
     // setup device contexts and colors
     HDC screenDC = NULL;
@@ -33,20 +38,70 @@ int main() {
     HBITMAP hBitmap = NULL;
     BITMAPINFO bmi = {};
 
+    // setup message handler thread
+    HANDLE listener = CreateThread(NULL, 0, MessageLoop, NULL, 0, NULL);
+    if (listener == NULL) {
+        std::cerr << FAILED_THREAD << PROGRAM_CLOSE;
+    }
 
-    // main section
+    // main loop
     while (!((GetAsyncKeyState(VK_CONTROL) & 0x8000) 
-            && (GetAsyncKeyState(QUIT_KEY) & 0x8000))) {
+           && (GetAsyncKeyState(QUIT_KEY) & 0x8000))) {
 
-        while (GetAsyncKeyState(TRIGGER)) {
+        while (clickHeld) {
             chromaSearch(&screenDC, &memoryDC, &hBitmap, &bmi);
         }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(LOOP_SLEEP));
     }
+
+    // Cleanup
+    TerminateThread(listener, 0);
+    WaitForSingleObject(listener, INFINITE);
+    CloseHandle(listener);
     
     std::cout << PROGRAM_CLOSE;
     return 0;
+}
+
+
+DWORD WINAPI MessageLoop(LPVOID lpParam) {
+
+    // listen for global mouse events
+    mouseHook = SetWindowsHookEx(WH_MOUSE_LL, MouseHookProc, 
+                                 GetModuleHandle(NULL), 0);
+
+    MSG msg;
+    while (true) {
+        // listen for + process messages
+        if (GetMessage(&msg, NULL, 0, 0)) {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+    }
+
+    // Cleanup
+    UnhookWindowsHookEx(mouseHook);
+    return 0;
+}
+
+
+// interrupt service routine
+LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
+
+    if (nCode >= 0) {
+        if (wParam == WM_RBUTTONDOWN) {
+            clickHeld = true;
+            return 1;
+        }
+        if (wParam == WM_RBUTTONUP) {
+            clickHeld = false;
+            return 1;
+        }
+    }
+
+    // Let other mouse events propagate
+    return CallNextHookEx(mouseHook, nCode, wParam, lParam);
 }
 
 
