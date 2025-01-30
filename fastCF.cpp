@@ -155,5 +155,4 @@ void shoot() {
     SendInput(1, const_cast<INPUT*>(&LEFT_DOWN), sizeof(INPUT));
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
     SendInput(1, const_cast<INPUT*>(&LEFT_UP), sizeof(INPUT));
-    std::this_thread::sleep_for(std::chrono::milliseconds(10));
 }
