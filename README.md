@@ -7,6 +7,7 @@ Testing instructions:
 
 Why use this over legacy chromafire?
 - 94% --> 98% in-game accuracy
+- Lower-level implementation
 - No setup required
 - Non-white checks instead of red checks (more predictable)
 - Massive overhead reduction (and therefore signal-to-latency reduction)
