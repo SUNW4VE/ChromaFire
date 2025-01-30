@@ -8,6 +8,9 @@
 #define FAILED_THREAD "Failed to create thread.\n"
 #define LOOP_SLEEP 5
 
+constexpr INPUT LEFT_DOWN  = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTDOWN, 0, NULL } };
+constexpr INPUT LEFT_UP  = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTUP, 0, NULL } };
+
 uint16_t CENTER_X, CENTER_Y;
 const uint8_t MIN_INTENSITY = 155;
 const uint8_t QUIT_KEY = 'Q';   // CTRL + QUIT_KEY
@@ -149,7 +152,8 @@ void chromaSearch(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
 
 
 void shoot() {
-    mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+    SendInput(1, const_cast<INPUT*>(&LEFT_DOWN), sizeof(INPUT));
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
-    mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+    SendInput(1, const_cast<INPUT*>(&LEFT_UP), sizeof(INPUT));
+    std::this_thread::sleep_for(std::chrono::milliseconds(10));
 }
