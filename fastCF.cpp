@@ -22,7 +22,7 @@ DWORD WINAPI MessageLoop(LPVOID lpParam);
 LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam);
 void chromaSearch(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
                   BITMAPINFO *bmi);
-void shoot();
+inline void shoot();
 
 
 int main() {
@@ -151,7 +151,7 @@ void chromaSearch(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
 }
 
 
-void shoot() {
+inline void shoot() {
     SendInput(1, const_cast<INPUT*>(&LEFT_DOWN), sizeof(INPUT));
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
     SendInput(1, const_cast<INPUT*>(&LEFT_UP), sizeof(INPUT));
