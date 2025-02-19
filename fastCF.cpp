@@ -70,7 +70,7 @@ int main() {
         std::this_thread::sleep_for(std::chrono::milliseconds(LOOP_SLEEP));
     } 
 
-    // double average = sum / count;
+    // double average = (double) sum / count;
     // std::cout << "average of "
     //                   << average
     //                   << " microseconds\n";
