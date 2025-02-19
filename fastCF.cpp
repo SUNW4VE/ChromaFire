@@ -21,8 +21,8 @@ HHOOK mouseHook;
 DWORD WINAPI MessageLoop(LPVOID lpParam);
 LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam);
 void chromaSearch(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
-                  BITMAPINFO *bmi);
-inline void shoot();
+                  BITMAPINFO *bmi) noexcept;
+inline void shoot() noexcept;
 
 
 int main() {
@@ -32,7 +32,7 @@ int main() {
     SetProcessDPIAware();
 
     // get pixel coords
-    CENTER_X = (GetSystemMetrics(SM_CXSCREEN) / 2 );
+    CENTER_X = (GetSystemMetrics(SM_CXSCREEN) / 2 + 24);
     CENTER_Y = (GetSystemMetrics(SM_CYSCREEN) / 2 );
 
     // setup device contexts and colors
@@ -47,16 +47,33 @@ int main() {
         std::cerr << FAILED_THREAD << PROGRAM_CLOSE;
     }
 
+    // int count = 0;
+    // int sum = 0;
+
     // main loop
     while (!((GetAsyncKeyState(VK_CONTROL) & 0x8000) 
            && (GetAsyncKeyState(QUIT_KEY) & 0x8000))) {
+
+            // auto t1 = std::chrono::high_resolution_clock::now();
+            // chromaSearch(&screenDC, &memoryDC, &hBitmap, &bmi);
+            // auto t2 = std::chrono::high_resolution_clock::now();
+            // std::cout << "test function took "
+            //           << std::chrono::duration_cast<std::chrono::microseconds>(t2-t1).count()
+            //           << " microseconds\n";
+            // sum += std::chrono::duration_cast<std::chrono::microseconds>(t2-t1).count();
+            // count++;
 
         while (clickHeld) {
             chromaSearch(&screenDC, &memoryDC, &hBitmap, &bmi);
         }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(LOOP_SLEEP));
-    }
+    } 
+
+    // double average = sum / count;
+    // std::cout << "average of "
+    //                   << average
+    //                   << " microseconds\n";
 
     // Cleanup
     TerminateThread(listener, 0);
@@ -109,7 +126,7 @@ LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
 
 
 void chromaSearch(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap, 
-                  BITMAPINFO *bmi) {
+                  BITMAPINFO *bmi) noexcept {
 
     *screenDC = ::GetDC(nullptr);
     *memoryDC = CreateCompatibleDC(*screenDC);
@@ -141,7 +158,7 @@ void chromaSearch(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
         if (red < (MIN_INTENSITY)
             || green < (MIN_INTENSITY)
             || blue < (MIN_INTENSITY)) 
-            shoot();
+            ; // shoot();
     }
 
     // cleanup
@@ -151,7 +168,7 @@ void chromaSearch(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
 }
 
 
-inline void shoot() {
+inline void shoot() noexcept {
     SendInput(1, const_cast<INPUT*>(&LEFT_DOWN), sizeof(INPUT));
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
     SendInput(1, const_cast<INPUT*>(&LEFT_UP), sizeof(INPUT));
