@@ -8,11 +8,11 @@
 
 ✅ **Better accuracy**: 94% → 98% detection rate improvement  
 ✅ **Lower overhead**: Reduced CPU/GPU usage  
-✅ **Lower-level implementation** for better performance
+✅ **Lower-level implementation** for better performance  
 ✅ **More reliable detection**: Uses non-white pixel checks instead of red-detection  
 ✅ **Minimal input lag**: Faster signal processing  
 ✅ **No setup required**: Just download and run  
-✅ **No reported bugs**
+✅ **No reported bugs**  
 ✅ **Not world infamous chicken fettuccine alfredo code**
 
 ## Installation & Usage
