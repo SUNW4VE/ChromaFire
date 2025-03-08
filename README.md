@@ -1,8 +1,8 @@
-# fastCF
+# ChromaFire
 
 ## Overview
 
-`fastCF` is a high-performance, low-latency color-based trigger bot designed to showcase exploitable features to Pixel Gun 3D game developers. 
+`fastCF` (ChromaFire 3) is a high-performance, low-latency color-based trigger bot designed to showcase exploitable features to Pixel Gun 3D game developers. 
 
 ## Why Use fastCF Over Legacy Chromafire?
 
