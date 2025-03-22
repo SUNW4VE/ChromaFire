@@ -1,4 +1,4 @@
-# ChromaFire
+# ChromaFire ver. 3
 
 ## Overview
 
