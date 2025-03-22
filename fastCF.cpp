@@ -3,10 +3,11 @@
 #include <chrono>
 #include <thread>
 
-#define PROGRAM_OPEN "Launched fastCF.\n"
-#define PROGRAM_CLOSE "Closing fastCF.\n"
-#define FAILED_THREAD "Failed to create thread.\n"
 #define LOOP_SLEEP 5
+
+constexpr char* PROGRAM_OPEN = "Launched ChromaFire.\n";
+constexpr char* PROGRAM_CLOSE = "Closing ChromaFire.\n";
+constexpr char* FAILED_THREAD = "Failed to create thread.\n";
 
 constexpr INPUT LEFT_DOWN  = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTDOWN, 0, NULL } };
 constexpr INPUT LEFT_UP  = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTUP, 0, NULL } };
@@ -15,7 +16,7 @@ uint16_t CENTER_X, CENTER_Y;
 const uint8_t MIN_INTENSITY = 155;
 const uint8_t QUIT_KEY = 'Q';   // CTRL + QUIT_KEY
 
-volatile bool clickHeld = false;
+std::atomic<bool> clickHeld{false};
 HHOOK mouseHook;
 
 DWORD WINAPI MessageLoop(LPVOID lpParam);
