@@ -3,7 +3,8 @@
 ## Overview
 
 `fastCF` (ChromaFire 3) is a high-performance, low-latency color-based exploit demonstrator designed to showcase vulnerable features to Pixel Gun 3D game developers. 
-DISCLAIMER: ChromaFire only works with legacy versions of the game.
+
+DISCLAIMER: ChromaFire only works with legacy versions of the game
 
 ## fastCF vs. Legacy Chromafire
 
