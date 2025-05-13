@@ -142,9 +142,9 @@ void chromaSearch(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
     BitBlt(*memoryDC, 0, 0, 1, 1, *screenDC, CENTER_X, CENTER_Y, SRCCOPY);
     
     // set up win32 BITMAPINFO structure to read from bitmap
-    bmi->bmiHeader.biSize            = 40;
-    bmi->bmiHeader.biWidth           = 1;
-    bmi->bmiHeader.biHeight          = -1;
+    bmi->bmiHeader.biSize           = 40;
+    bmi->bmiHeader.biWidth          = 1;
+    bmi->bmiHeader.biHeight         = -1;
     bmi->bmiHeader.biPlanes         = 1;
     bmi->bmiHeader.biBitCount       = 24;
     bmi->bmiHeader.biCompression    = BI_RGB;
