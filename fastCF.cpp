@@ -1,23 +1,25 @@
 #include <iostream>
 #include <windows.h>
 #include <chrono>
+#include <atomic>
 #include <thread>
 
 #define LOOP_SLEEP 5
 
-constexpr char* PROGRAM_OPEN = "Launched ChromaFire.\n";
-constexpr char* PROGRAM_CLOSE = "Closing ChromaFire.\n";
-constexpr char* FAILED_THREAD = "Failed to create thread.\n";
+constexpr char* PROGRAM_OPEN    = "Launched ChromaFire.\n";
+constexpr char* PROGRAM_CLOSE   = "Closing ChromaFire.\n";
+constexpr char* FAILED_THREAD   = "Failed to create thread.\n";
 
-constexpr INPUT LEFT_DOWN  = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTDOWN, 0, NULL } };
-constexpr INPUT LEFT_UP  = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTUP, 0, NULL } };
+constexpr INPUT LEFT_DOWN   = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTDOWN, 0, NULL } };
+constexpr INPUT LEFT_UP     = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTUP, 0, NULL } };
 
-uint16_t CENTER_X, CENTER_Y;
-const uint8_t MIN_INTENSITY = 155;
-const uint8_t QUIT_KEY = 'Q';   // CTRL + QUIT_KEY
+const uint8_t   MIN_INTENSITY = 155;
+const uint8_t   QUIT_KEY      = 'Q';   // CTRL + QUIT_KEY
+uint16_t        CENTER_X, 
+                CENTER_Y;
 
 std::atomic<bool> clickHeld{false};
-HHOOK mouseHook;
+HHOOK             mouseHook;
 
 DWORD WINAPI MessageLoop(LPVOID lpParam);
 LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam);
@@ -37,10 +39,10 @@ int main() {
     CENTER_Y = (GetSystemMetrics(SM_CYSCREEN) / 2 );
 
     // setup device contexts and colors
-    HDC screenDC = NULL;
-    HDC memoryDC = NULL;
+    HDC screenDC    = NULL;
+    HDC memoryDC    = NULL;
     HBITMAP hBitmap = NULL;
-    BITMAPINFO bmi = {};
+    BITMAPINFO bmi  = {};
 
     // setup message handler thread
     HANDLE listener = CreateThread(NULL, 0, MessageLoop, NULL, 0, NULL);
@@ -140,26 +142,26 @@ void chromaSearch(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
     BitBlt(*memoryDC, 0, 0, 1, 1, *screenDC, CENTER_X, CENTER_Y, SRCCOPY);
     
     // set up win32 BITMAPINFO structure to read from bitmap
-    bmi->bmiHeader.biSize = 40;
-    bmi->bmiHeader.biWidth = 1;
-    bmi->bmiHeader.biHeight = -1;
-    bmi->bmiHeader.biPlanes = 1;
-    bmi->bmiHeader.biBitCount = 24;
-    bmi->bmiHeader.biCompression = BI_RGB;
+    bmi->bmiHeader.biSize            = 40;
+    bmi->bmiHeader.biWidth           = 1;
+    bmi->bmiHeader.biHeight          = -1;
+    bmi->bmiHeader.biPlanes         = 1;
+    bmi->bmiHeader.biBitCount       = 24;
+    bmi->bmiHeader.biCompression    = BI_RGB;
 
     // read and compare colors
     // learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getdibits
     BYTE pixelData[3];
     if (GetDIBits(*memoryDC, *hBitmap, 0, 1, pixelData, bmi, DIB_RGB_COLORS)) {
 
-        BYTE blue = pixelData[0];
-        BYTE green = pixelData[1];
-        BYTE red = pixelData[2];
+        BYTE blue   = pixelData[0];
+        BYTE green  = pixelData[1];
+        BYTE red    = pixelData[2];
 
-        if (red < (MIN_INTENSITY)
-            || green < (MIN_INTENSITY)
+        if (red < (MIN_INTENSITY) 
+            || green < (MIN_INTENSITY) 
             || blue < (MIN_INTENSITY)) 
-            ; // shoot();
+                shoot();
     }
 
     // cleanup
