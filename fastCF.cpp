@@ -35,8 +35,8 @@ int main() {
     SetProcessDPIAware();
 
     // get pixel coords
-    CENTER_X = (GetSystemMetrics(SM_CXSCREEN) / 2 + 24);
-    CENTER_Y = (GetSystemMetrics(SM_CYSCREEN) / 2 );
+    CENTER_X = (GetSystemMetrics(SM_CXSCREEN) >> 1 );
+    CENTER_Y = (GetSystemMetrics(SM_CYSCREEN) >> 1 );
 
     // setup device contexts and colors
     HDC screenDC    = NULL;
