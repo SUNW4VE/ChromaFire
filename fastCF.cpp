@@ -1,18 +1,15 @@
+#define LOOP_SLEEP 5
+#define likely(x)   __builtin_expect(!!(x), 1)
+#define unlikely(x) __builtin_expect(!!(x), 0)
+
 #include <iostream>
 #include <windows.h>
 #include <chrono>
 #include <atomic>
 #include <thread>
 
-#define LOOP_SLEEP 5
-
-constexpr char* PROGRAM_OPEN    = "Launched ChromaFire.\n";
-constexpr char* PROGRAM_CLOSE   = "Closing ChromaFire.\n";
-constexpr char* FAILED_THREAD   = "Failed to create thread.\n";
-
-constexpr INPUT LEFT_DOWN   = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTDOWN, 0, NULL } };
-constexpr INPUT LEFT_UP     = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTUP, 0, NULL } };
-
+constexpr INPUT LEFT_DOWN     = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTDOWN, 0, NULL } };
+constexpr INPUT LEFT_UP       = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTUP, 0, NULL } };
 const uint8_t   MIN_INTENSITY = 155;
 const uint8_t   QUIT_KEY      = 'Q';   // CTRL + QUIT_KEY
 uint16_t        CENTER_X, 
@@ -30,7 +27,7 @@ inline void shoot() noexcept;
 
 int main() {
 
-    std::cout << PROGRAM_OPEN;
+    std::cout << "Launched ChromaFire.\n";
     SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
     SetProcessDPIAware();
 
@@ -47,43 +44,29 @@ int main() {
     // setup message handler thread
     HANDLE listener = CreateThread(NULL, 0, MessageLoop, NULL, 0, NULL);
     if (listener == NULL) {
-        std::cerr << FAILED_THREAD << PROGRAM_CLOSE;
+        std::cerr << "Failed to allocate thread.\n";
+        goto exit;
     }
 
     // int count = 0;
     // int sum = 0;
 
     // main loop
-    while (!((GetAsyncKeyState(VK_CONTROL) & 0x8000) 
-           && (GetAsyncKeyState(QUIT_KEY) & 0x8000))) {
-
-            // auto t1 = std::chrono::high_resolution_clock::now();
-            // chromaSearch(&screenDC, &memoryDC, &hBitmap, &bmi);
-            // auto t2 = std::chrono::high_resolution_clock::now();
-            // std::cout << "test function took "
-            //           << std::chrono::duration_cast<std::chrono::microseconds>(t2-t1).count()
-            //           << " microseconds\n";
-            // sum += std::chrono::duration_cast<std::chrono::microseconds>(t2-t1).count();
-            // count++;
-
-        while (clickHeld) {
+    while (unlikely((GetAsyncKeyState(VK_CONTROL) & 0x8000) && (GetAsyncKeyState(QUIT_KEY) & 0x8000))) {
+        while (likely(clickHeld)) {
             chromaSearch(&screenDC, &memoryDC, &hBitmap, &bmi);
         }
-
+    
         std::this_thread::sleep_for(std::chrono::milliseconds(LOOP_SLEEP));
     } 
-
-    // double average = (double) sum / count;
-    // std::cout << "average of "
-    //                   << average
-    //                   << " microseconds\n";
 
     // Cleanup
     TerminateThread(listener, 0);
     WaitForSingleObject(listener, INFINITE);
     CloseHandle(listener);
-    
-    std::cout << PROGRAM_CLOSE;
+
+exit: 
+    std::cout << "Closing ChromaFire.\n";
     return 0;
 }
 
@@ -95,7 +78,7 @@ DWORD WINAPI MessageLoop(LPVOID lpParam) {
                                  GetModuleHandle(NULL), 0);
 
     MSG msg;
-    while (true) {
+    while (likely(1)) {
         // listen for + process messages
         if (GetMessage(&msg, NULL, 0, 0)) {
             TranslateMessage(&msg);
@@ -176,3 +159,4 @@ inline void shoot() noexcept {
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
     SendInput(1, const_cast<INPUT*>(&LEFT_UP), sizeof(INPUT));
 }
+
