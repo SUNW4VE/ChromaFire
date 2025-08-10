@@ -21,7 +21,8 @@ struct sys_state {
 
 static struct scan_operations cf_ops {
     .coords = cf_coords_init,
-    .scan = cf_search,
+    .submit = cf_submit,
+    .process = cf_search,
     .act = cf_shoot,
 };
 
@@ -131,6 +132,9 @@ int cf_coords_init(uint16_t *COORDS) {
     return 1;
 }
 
+int cf_submit(struct *cf_message) {
+    return 1;
+}
 
 DWORD WINAPI MessageLoop(LPVOID lpParam) {
 
