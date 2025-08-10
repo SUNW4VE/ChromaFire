@@ -1,5 +1,4 @@
 #include <windows.h>
-#include <chrono>
 #include <atomic>
 #include <thread>
 
@@ -21,6 +20,7 @@ struct sys_state {
 
 static struct scan_operations cf_ops {
     .coords = cf_coords_init,
+    .fetch_loop = sys_fetch_message_loop,
     .submit = cf_submit,
     .process = cf_search,
     .act = cf_shoot,
@@ -29,6 +29,7 @@ static struct scan_operations cf_ops {
 static struct sys_operations sys_ops {
     .proc_init = cf_os_init,
     .thread_init = cf_thread_init,
+    .handle_event = sys_process_hook,
 };
 
 enum __attribute__((packed)) cf_events {
@@ -52,28 +53,28 @@ struct cf_message {
 struct cf_context {
     HANDLE *thread;
 
-    struct cf_message[0];
+    struct cf_message[64];
 } CACHE_ALIGNED;
 
 constexpr INPUT LEFT_DOWN     = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTDOWN, 0, NULL } };
 constexpr INPUT LEFT_UP       = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTUP, 0, NULL } };
 
-DWORD WINAPI MessageLoop(LPVOID lpParam);
-LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam);
+DWORD WINAPI sys_fetch_message_loop(LPVOID lpParam);
+LRESULT CALLBACK sys_process_hook(int nCode, WPARAM wParam, LPARAM lParam);
 
 int cf_os_init();
 HANDLE cf_thread_init();
 int cf_coords_init();
-void chromaSearch(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
+void cf_search(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
                   BITMAPINFO *bmi) noexcept;
-inline void shoot() noexcept;
+inline void cf_shoot() noexcept;
 
 
 int main() {
 
     sys_ops.proc_init();
     cf_ops.coords();
-
+    sys_ops.thread_init();
 
     // setup device contexts and colors
     HDC screenDC    = NULL;
@@ -136,7 +137,7 @@ int cf_submit(struct *cf_message) {
     return 1;
 }
 
-DWORD WINAPI MessageLoop(LPVOID lpParam) {
+DWORD WINAPI sys_fetch_message_loop(LPVOID lpParam) {
 
     // listen for global mouse events
     mouseHook = SetWindowsHookEx(WH_MOUSE_LL, MouseHookProc, 
@@ -158,7 +159,7 @@ DWORD WINAPI MessageLoop(LPVOID lpParam) {
 
 
 // interrupt service routine
-LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
+LRESULT CALLBACK sys_process_hook(int nCode, WPARAM wParam, LPARAM lParam) {
 
     if (nCode >= 0) {
         if (wParam == WM_RBUTTONDOWN) {
@@ -218,10 +219,8 @@ static void cf_search(HDC *screenDC, HDC *memoryDC, HBITMAP *hBitmap,
     ::ReleaseDC(nullptr, *screenDC);
 }
 
-
 inline void cf_shoot() noexcept {
     SendInput(1, const_cast<INPUT*>(&LEFT_DOWN), sizeof(INPUT));
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
     SendInput(1, const_cast<INPUT*>(&LEFT_UP), sizeof(INPUT));
 }
-
