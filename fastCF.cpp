@@ -45,7 +45,7 @@ int main() {
     HANDLE listener = CreateThread(NULL, 0, MessageLoop, NULL, 0, NULL);
     if (listener == NULL) {
         std::cerr << "Failed to allocate thread.\n";
-        goto exit;
+        return 0;
     }
 
     // int count = 0;
@@ -65,7 +65,6 @@ int main() {
     WaitForSingleObject(listener, INFINITE);
     CloseHandle(listener);
 
-exit: 
     std::cout << "Closing ChromaFire.\n";
     return 0;
 }
@@ -159,4 +158,5 @@ inline void shoot() noexcept {
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
     SendInput(1, const_cast<INPUT*>(&LEFT_UP), sizeof(INPUT));
 }
+
 
