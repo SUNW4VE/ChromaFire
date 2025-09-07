@@ -8,12 +8,20 @@
     ((type *)((char *)(ptr) - offsetof(type, member)))
 #define CACHE_ALIGNED __attribute__((aligned(64)))
 
+typedef enum {
+    ERR_OK             = 0, 
+    ERR_ALLOC          = 1,   
+    ERR_TIMEOUT        = 2,        
+    ERR_UNKNOWN        = 3       
+} ERROR_CODES;
+
 struct sys_state {
     std::atomic<bool> clickHeld{false};
 
     uint16_t CENTER[2];
     uint8_t MIN_INTEN = 155;
-    uint8_t QUIT_KEY = 'Q';
+    uint8_t QUIT = 'Q';
+    uint8_t CTRL = VK_CONTROL;
 
     HHOOK mouseHook;
 } CACHE_ALIGNED;
@@ -53,7 +61,7 @@ struct cf_message {
 struct cf_context {
     HANDLE *thread;
 
-    struct cf_message[64];
+    struct cf_message messages[64];
 } CACHE_ALIGNED;
 
 constexpr INPUT LEFT_DOWN     = { INPUT_MOUSE, { 0, 0, 0, MOUSEEVENTF_LEFTDOWN, 0, NULL } };
@@ -74,23 +82,18 @@ int main() {
 
     sys_ops->proc_init();
     cf_ops->coords();
-    sys_ops->thread_init();
 
-    // setup device contexts and colors
+    // setup contextx
     HDC screenDC    = NULL;
     HDC memoryDC    = NULL;
     HBITMAP hBitmap = NULL;
     BITMAPINFO bmi  = {};
 
     // setup message handler thread
-    HANDLE cf_thread = sys_ops.thread_init();
-    if (listener == NULL) {
-        std::cerr << "Failed to allocate thread.\n";
-        return 0;
-    }
+    HANDLE cf_thread = sys_ops->thread_init();
 
     // main loop
-    while (unlikely((GetAsyncKeyState(VK_CONTROL) & 0x8000) && (GetAsyncKeyState(QUIT_KEY) & 0x8000))) {
+    while (unlikely((GetAsyncKeyState(sys_state.CTRL) & 0x8000) && (GetAsyncKeyState(sys_state.QUIT) & 0x8000))) {
         while (likely(clickHeld)) {
             chromaSearch(&screenDC, &memoryDC, &hBitmap, &bmi);
         }
@@ -98,12 +101,11 @@ int main() {
         std::this_thread::sleep_for(std::chrono::milliseconds(LOOP_SLEEP));
     } 
 
-    // Cleanup
+    // cleanup
     TerminateThread(listener, 0);
     WaitForSingleObject(listener, INFINITE);
     CloseHandle(listener);
 
-    std::cout << "Closing ChromaFire.\n";
     return 0;
 }
 
@@ -118,9 +120,8 @@ int cf_os_init() {
 HANDLE cf_thread_init() {
     HANDLE listener = CreateThread(NULL, 0, MessageLoop, NULL, 0, NULL);
 
-    if (unlikely(listener == NULL)) {
-        std::cerr << "Failed to allocate thread.\n";
-        return 0;
+    if (unlikely(!listener)) {
+        return ERR_ALLOC;
     }
 
     return listener;
@@ -133,7 +134,7 @@ int cf_coords_init(uint16_t *COORDS) {
     return 1;
 }
 
-int cf_submit(struct *cf_message) {
+int cf_submit(struct cf_message* msg) {
     return 1;
 }
 
