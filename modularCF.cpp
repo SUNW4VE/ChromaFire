@@ -9,10 +9,10 @@
 #define CACHE_ALIGNED __attribute__((aligned(64)))
 
 typedef enum {
-    ERR_OK             = 0, 
-    ERR_ALLOC          = 1,   
-    ERR_TIMEOUT        = 2,        
-    ERR_UNKNOWN        = 3       
+    ERR_OK      = 0, 
+    ERR_ALLOC   = 1,   
+    ERR_TIMEOUT = 2,        
+    ERR_UNKNOWN = 3       
 } ERROR_CODES;
 
 struct sys_state {
