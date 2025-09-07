@@ -72,9 +72,9 @@ inline void cf_shoot() noexcept;
 
 int main() {
 
-    sys_ops.proc_init();
-    cf_ops.coords();
-    sys_ops.thread_init();
+    sys_ops->proc_init();
+    cf_ops->coords();
+    sys_ops->thread_init();
 
     // setup device contexts and colors
     HDC screenDC    = NULL;
